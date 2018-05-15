@@ -14,7 +14,11 @@
     </v-navigation-drawer>
     <v-toolbar app dark color='primary'>
       <v-toolbar-side-icon class='hidden-md-and-up' @click='drawer = !drawer'></v-toolbar-side-icon>
-      <v-toolbar-title>Vue Application</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link class='pointer' tag='span' to='/'>
+          Vue Application
+        </router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class='hidden-sm-and-down'>
         <v-btn flat v-for='link of links' :key='link.title' :to='link.url'>
@@ -45,3 +49,9 @@
     }
   }
 </script>
+
+<style scoped>
+.pointer {
+  cursor: pointer;
+}
+</style>
