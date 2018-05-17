@@ -35,3 +35,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+p {
+  word-wrap: break-word;
+}
+</style>

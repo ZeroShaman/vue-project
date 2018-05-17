@@ -54,9 +54,10 @@ export default {
         const ad = {
           title: this.title,
           description: this.description,
-          promo: this.promo
+          promo: this.promo,
+          imageSrc: 'http://cfile28.uf.tistory.com/image/25155033597E81530E2C03'
         }
-        console.log(ad)
+        this.$store.dispatch('createAd', ad)
       }
     }
   }

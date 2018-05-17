@@ -16,16 +16,25 @@ export default {
         id: '2'
       },
       {
-        title: 'First ad',
-        description: 'First ad description',
+        title: 'Three ad',
+        description: 'Three ad description',
         promo: true,
         imageSrc: 'https://vuetifyjs.com/static/doc-images/carousel/planet.jpg',
         id: '3'
       }
     ]
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    createAd (state, payload) {
+      state.ads.push(payload)
+    }
+  },
+  actions: {
+    createAd ({commit}, payload) {
+      payload.id = (Math.random() * 100).toFixed(0)
+      commit('createAd', payload)
+    }
+  },
   getters: {
     ads (state) {
       return state.ads
@@ -37,6 +46,11 @@ export default {
     },
     myAds (state) {
       return state.ads
+    },
+    adById (state) {
+      return adId => {
+        return state.ads.find(ad => ad.id === adId)
+      }
     }
   }
 }
