@@ -26,5 +26,10 @@ new Vue({
       storageBucket: 'vivchar-vinograd.appspot.com',
       messagingSenderId: '1075454688412'
     })
+    fb.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('autoLoginUser', user)
+      }
+    })
   }
 })
