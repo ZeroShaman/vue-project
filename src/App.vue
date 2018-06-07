@@ -30,6 +30,19 @@
     <v-content>
       <router-view></router-view>
     </v-content>
+    <template v-if="error">
+      <v-snackbar
+        class="error-msg"
+        :timeout="0"
+        :multi-line="true"
+        color="error"
+        @input="closeError"
+        :value="true"
+      >
+        {{error}}
+        <v-btn flat dark @click.native="closeError">Close</v-btn>
+      </v-snackbar>
+    </template>
   </v-app>
 </template>
 
@@ -46,6 +59,16 @@
           { title: 'My ads', icon: 'list', url: '/list' }
         ]
       }
+    },
+    computed: {
+      error () {
+        return this.$store.getters.error
+      }
+    },
+    methods: {
+      closeError () {
+        this.$store.dispatch('clearError')
+      }
     }
   }
 </script>
@@ -53,5 +76,9 @@
 <style scoped>
 .pointer {
   cursor: pointer;
+}
+.error-msg {
+  margin-bottom: 50px;
+  box-sizing: content-box;
 }
 </style>
